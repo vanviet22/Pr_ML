@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta rel="icon" type="image/x-icon" href="">
+    <title>Hệ thống dự đoán bệnh tiểu đường</title>
+</head>
+<style>
+    body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        /* Loại bỏ khoảng cách mặc định của body */
+        overflow: hidden;
+    }
+
+    #title {
+        display: flex;
+        width: 100vw;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        font-weight: bolder;
+        font-size: 22px;
+        background-color: wheat;
+    }
+
+    #title img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    #menu {
+        background-color: darkblue;
+        width: 150px;
+        height: calc(100vh - 50px);
+        position: fixed;
+    }
+
+    .conponentMenu {
+        width: 100%;
+        height: 35px;
+        margin-bottom: 2px;
+        border-left: none;
+        border-right: none
+    }
+
+    #btDivInfor {
+        background-color: royalblue;
+    }
+
+    #detail {
+        margin-left: 150px;
+        width: calc(100vw - 150px);
+        height: calc(100vh - 50px);
+        background-color: beige;
+        overflow-y: auto;
+
+    }
+
+    .infor {
+        width: 100%;
+        height: 100%;
+        font-size: 19px;
+        margin: 0;
+    }
+
+    #divInfor h2 {
+        margin-left: 30px;
+        font-size: 24px;
+        color: #333;
+        text-decoration: underline;
+    }
+
+    #divInfor p {
+        margin-left: 50px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .classinfor {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: auto;
+    }
+
+    #inforIll {
+        width: 70%;
+    }
+
+    #imgIll {
+        margin-left: 2%;
+        width: 28%;
+    }
+
+    .classinfor img {
+        margin-top: 20px;
+        width: 300px;
+        height: 200px;
+    }
+
+    #divPredict {
+        display: none;
+    }
+
+    #divPredict h3 {
+        text-align: center;
+        color: crimson;
+        margin-bottom: 50px;
+    }
+
+    .form-content {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+
+    .conponentFeature {
+        display: flex;
+        width: 45%;
+        margin: 5px;
+    }
+
+    .conponentFeature label {
+        width: 350px;
+        margin-left: 50px;
+    }
+
+    .conponentFeature input,
+    .conponentFeature select {
+        width: 80px;
+        margin-bottom: 30px;
+        height: 22px;
+    }
+
+    #btPredict {
+        width: 120px;
+        border-radius: 5px;
+        background-color: aqua;
+        height: 30px;
+        margin-left: 50px;
+    }
+
+    #btPredict:hover {
+        background-color: red;
+        background-color: royalblue;
+    }
+    #age,
+    #education,
+    #income {
+        width: auto;
+    }
+</style>
+
+<body>
+    <form id="form">
+        <div id="title">
+            <img src="./img/iconBranch.jpg">Ứng dụng dự đoán bệnh tiểu đường của sinh viên trường Đại học Sài Gòn
+        </div>
+        <div id="menu">
+            <button class="conponentMenu" id="btDivInfor">Giới thiệu</button><br>
+            <button class="conponentMenu" id="btDivPredict">Dự đoán</button>
+        </div>
+        <div id="detail">
+            <div class="infor" id="divInfor">
+                <div class="classinfor" id="divIll">
+                    <div id="inforIll">
+                        <h2>I.Bệnh tiểu đường</h2>
+                        <p>+Tiểu đường là tình trạng mãn tính biểu hiện qua mức đường huyết cao do cơ thể thiếu insulin
+                        </p>
+                        <p>+Đây là một căn bệnh có tính chất xã hội cao tại nhiều quốc gia, phát triển nhanh chóng và
+                            gây ra nhiều ảnh hưởng nghiêm trọng đến sức khỏe con người.</p>
+                        <p>+Bệnh tiểu đường là một bệnh không lây nhiễm mà Tổ chức Y tế Thế giới (WHO) coi là ưu tiên
+                            hàng đầu trong chiến lược chăm sóc sức khỏe cộng đồng</p>
+                        <p>+Nước ta tuy không nằm trong top 10 quốc gia có tỷ lệ mắc bệnh tiểu đường cao, nhưng lại có
+                            tốc độ gia tăng bệnh thuộc hàng nhanh nhất. Đây là một
+                            trong những nguyên nhân tử vong hàng đầu tại nước ta, chỉ đứng sau bệnh tim và ung thư</p>
+                    </div>
+                    <div id="imgIll">
+                        <img src="./img/tieuduong.jpg">
+                        <img src="./img/dau-hieu-benh-tieu-duong-1.jpg">
+                    </div>
+
+                </div>
+                <div class="classinfor" id="divmodel">
+                    <div id="imgmodel">
+                        <h2>II.Giới thiệu về ứng dụng</h2>
+                        <img src="./img/Ml.jpg">
+                        <img src="./img/Ml02.jpg">
+                    </div>
+                    <div id="informodel">
+
+                        <p>+Đây là một mô hình học máy trong lĩnh vực trí tuệ nhân tạo.</p>
+                        <p>+Độ chính xác của mô hình là 75.24%</p>
+                        <p>+Mục tiêu dễ dàng sử dụng và dự đoán chính xác nguy cơ mắc bệnh tiểu đường để từ đó giảm
+                            thiểu các biến trứng nguy hiểm</p>
+                        <p>+Sử dụng bộ dữ liệu <b>diabetes _ binary _ 5050split _ health _ indicators _
+                                BRFSS2015.csv</b> trên Kaggle(đây là nơi lưu trữ nổi tiếng cho cộng đồng dữ liệu và khoa
+                            học dữ liệu)
+                            bao gồm 70,692 câu trả lời khảo sát từ <b> BRFSS2015 của CDC</b> </p>
+                        <p>+Mô hình sử dụng thuật toán RandomForest.Là một thuật toán học máy mạnh mẽ và phổ biến trong
+                            học máy.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="infor" id="divPredict">
+                <div class="title">
+                    <h3>Hãy chọn thông tin chính xác về tình trạng sức khỏe của bạn!</h3>
+                </div>
+                <div class="form-content">
+                    <div class="conponentFeature">
+                        <label>Huyết áp cao</label>
+                        <select class="comBoBox" name="options" id="bloodPressure">
+                            <option value="1">Có</option>
+                            <option value="0">Không</option>
+                        </select>
+                    </div>
+                    <div class="conponentFeature">
+                        <label>Cholesterol cao</label>
+                        <select class="comBoBox" name="options" id="Choles">
+                            <option value="1">Có</option>
+                            <option value="0">Không</option>
+                        </select>
+                    </div>
+                    <div class="conponentFeature">
+                        <label>Chỉ số cơ thể-BMI-</label>
+                        <input type="text" placeholder="bạn nhập" id="BMI">
+                    </div>
+                    <div class="conponentFeature">
+                        <label>Sức khỏe tổng quát</label>
+                        <select class="comBoBox" name="options" id="levelHealth">
+                            <option value="1">Xuất sắc</option>
+                            <option value="2">Rất tốt</option>
+                            <option value="3">Tốt</option>
+                            <option value="4">Kém</option>
+                            <option value="5">Rất kém</option>
+                        </select>
+                    </div>
+                    <div class="conponentFeature">
+                        <label>Hút thuốc</label>
+                        <select class="comBoBox" name="options" id="smoker">
+                            <option value="1">Có</option>
+                            <option value="0">Không</option>
+                        </select>
+                    </div>
+                    <div class="conponentFeature">
+                        <label>Số ngày tinh thần kém trong tháng</label>
+                        <input type="number" min="1" max="30" value="1" id="mind">
+                    </div>
+                    <div class="conponentFeature">
+                        <label>Tham gian hoạt động trong tháng</label>
+                        <select class="comBoBox" name="options" id="exercise">
+                            <option value="1">Có</option>
+                            <option value="0">Không</option>
+                        </select>
+                    </div>
+                    <div class="conponentFeature">
+                        <label>Giới tính</label>
+                        <select class="comBoBox" name="options" id="sex">
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
+                    </div>
+                    <div class="conponentFeature">
+                        <label>Độ tuổi</label>
+                        <select class="comBoBox" name="options" id="age">
+                            <option value="1">Từ 18 đến 24</option>
+                            <option value="2">Từ 25 đến 29</option>
+                            <option value="3">Từ 30 đến 34</option>
+                            <option value="4">Từ 35 đến 39</option>
+                            <option value="5">Từ 40 đến 44</option>
+                            <option value="6">Từ 45 đến 49</option>
+                            <option value="7">Từ 50 đến 54</option>
+                            <option value="8">Từ 55 đến 59</option>
+                            <option value="9">Từ 60 đến 64</option>
+                            <option value="10">Từ 65 đến 69</option>
+                            <option value="11">Từ 70 đến 74</option>
+                            <option value="12">Từ 75 đến 79</option>
+                            <option value="13">Trên 80</option>
+                        </select>
+                    </div>
+                    <div class="conponentFeature">
+                        <label>Học vấn</label>
+                        <select class="comBoBox" name="options" id="education">
+                            <option value="1">Chưa xong cấp 3</option>
+                            <option value="2">Xong cấp 3</option>
+                            <option value="3">Hoàn thành một phần đại học(cao đẳng,nghề)</option>
+                            <option value="4">Tốt nghiệp đại học</option>
+                            <option value="5">Hoàn thành một phần sau đại học</option>
+                            <option value="6">Tốt nghiệp sau đại học(thạc sĩ,tiến sĩ,...)</option>
+
+                        </select>
+                    </div>
+                    <div class="conponentFeature">
+                        <label>Thu nhập hàng năm</label>
+                        <select class="comBoBox" name="options" id="income">
+                            <option value="1">Dưới 250 triệu</option>
+                            <option value="2">Từ 250 đến 380 triệu</option>
+                            <option value="3">Từ 380 đến 410 triệu</option>
+                            <option value="4">Từ 410 đến 540 triệu</option>
+                            <option value="5">Từ 540 đến 670 triệu</option>
+                            <option value="6">Từ 670 đến 800 triệu</option>
+                            <option value="7">Từ 800 đến 930 triệu</option>
+                            <option value="8">Trên 930 triệu</option>
+                        </select>
+                    </div>
+                    <div class="conponentFeature">
+                        <label>Tiêu thụ trái cây trong ngày</label>
+                        <select class="comBoBox" name="options" id="eatFruist">
+                            <option value="1">Có</option>
+                            <option value="0">Không</option>
+                        </select>
+                    </div>
+                    <div class="conponentFeature">
+                        <label>Tiêu thụ rau trong ngày</label>
+                        <select class="comBoBox" name="options" id="eatVegg">
+                            <option value="1">Có</option>
+                            <option value="0">Không</option>
+                        </select>
+                    </div>
+                    <button id="btPredict">Dự đoán</button>
+
+                </div>
+                
+            </div>
+        </div>
+    </form>
+    <script>
+        document.getElementById("btDivInfor").addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn chặn submit form
+            document.getElementById("btDivPredict").style.backgroundColor = "white";
+            document.getElementById("divPredict").style.display = "none";
+            document.getElementById("divInfor").style.display = "block";
+            document.getElementById("btDivInfor").style.backgroundColor = "royalblue";
+        });
+
+        document.getElementById("btDivPredict").addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn chặn submit form
+            document.getElementById("btDivInfor").style.backgroundColor = "white";
+            document.getElementById("divInfor").style.display = "none";
+            document.getElementById("divPredict").style.display = "block";
+            document.getElementById("btDivPredict").style.backgroundColor = "royalblue";
+        });
+        document.getElementById("btPredict").addEventListener("click", function (event) {
+            event.preventDefault();  
+            const bmiValue = parseFloat(document.getElementById("BMI").value);
+            if (isNaN(bmiValue) || bmiValue <= 0 || bmiValue > 100) {
+                alert("Vui lòng nhập một giá trị chỉ số cơ thể -BMI- có giá trị từ 0 đến 100");
+                return;
+            }
+            if (isNaN( document.getElementById("mind").value) ||  document.getElementById("mind").value <1 ||  document.getElementById("mind").value > 30) {
+                alert("Vui lòng nhập lại sô ngày tinh thần kém trong tháng có giá trị từ 1 đến 30");
+                return;
+            }
+            const data = {
+                bloodPressure: document.getElementById("bloodPressure").value,
+                cholesterol: document.getElementById("Choles").value,
+                BMI: bmiValue,
+                levelHealth: document.getElementById("levelHealth").value,
+                smoker: document.getElementById("smoker").value,
+                mind: document.getElementById("mind").value,
+                exercise: document.getElementById("exercise").value,
+                sex: document.getElementById("sex").value,
+                age: document.getElementById("age").value,
+                education: document.getElementById("education").value,
+                income: document.getElementById("income").value,
+                eatFruits: document.getElementById("eatFruist").value,
+                eatVeggies: document.getElementById("eatVegg").value,
+            };
+
+            // Gửi dữ liệu đến server bằng Fetch API
+            fetch("http://127.0.0.1:8000/predict", { 
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data), // Chuyển đối tượng thành JSON
+            })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.error) {
+                        alert("Đã xảy ra lỗi: " + result.error);
+                    } else {
+                        alert("Kết quả "+result.result);
+                        if(result.result==1)
+                        {
+                            alert("KẾT QUẢ DỰ ĐOÁN CỦA HỆ THỐNG: Bạn có nguy cơ mắc bệnh tiểu đường.");
+                        }
+                        else
+                        {
+                            alert("KẾT QUẢ DỰ ĐOÁN CỦA HỆ THỐNG: Bạn không mắc bệnh tiểu đường.Xin chúc mừng bạn.");
+                        }
+                    }
+                })
+                .catch(error => {
+                    alert("Có lỗi "+error);
+                });
+        });
+
+    </script>
+</body>
+
+</html>
