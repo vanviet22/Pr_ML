@@ -20,7 +20,7 @@ II) Tổng quan và lí do
 - Việt Nam tuy không nằm trong top 10 quốc gia có tỷ lệ mắc bệnh tiểu đường cao, nhưng lại có tốc độ gia tăng bệnh thuộc hàng nhanh nhất. Đây là một trong những nguyên nhân tử vong hàng đầu tại Việt Nam, chỉ đứng sau bệnh tim và ung thư.
 - Chẩn đoán bệnh là một thách thức lớn trong lĩnh vực y tế, đặc biệt là đối với bệnh tiểu đường. Cùng với sự phát triển của khoa học dữ liệu và trí tuệ nhân tạo (AI), chúng ta có thể khai thác và phân tích lượng lớn dữ liệu y tế nhờ các phương pháp machine learning (ML).
 - Những hệ thống chẩn đoán thông minh này có độ chính xác cao, giúp phát hiện sớm nguy cơ mắc bệnh và từ đó giảm thiểu các biến chứng nguy hiểm. Bên cạnh đó, AI còn hỗ trợ cá nhân hóa liệu trình điều trị, mang lại hiệu quả tối ưu cho từng bệnh nhân.
-- Với những lí do trên thì nhóm tôi quyết định xây dựng ứng dụng mô hình Meachine Learning để dự đoán nguy cơ mắc bệnh tiểu đường.
+- Với những lí do trên thì nhóm tôi quyết định xây dựng ứng dụng mô hình Meachine Learning để dự đoán nguy cơ mắc bệnh tiểu đường.</br>
 III) Dư án</br>
 - Đây là bài toán phân lớp của học có giám sát.</br>
 - Sử dụng bộ data '/kaggle/input/diabetes-health-indicators-dataset /diabetes_binary_5050split_health_indicators_BRFSS2015.csv'.Đây là Dataset lấy từ Kaggle, là một tập dữ liệu sạch gồm 70.692 phản hồi khảo sát từ chương trình BRFSS2015 của CDC. Tập dữ liệu có sự phân chia cân bằng 50-50 giữa những người không mắc bệnh tiểu đường và những người bị tiền tiểu đường hoặc tiểu đường.Dữ liệu hoàn toàn là số và có định dạng.Với biến mục tiêu là Diabetes_binary và 21 biến đặc trưng.</br>
